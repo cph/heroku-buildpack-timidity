@@ -31,7 +31,7 @@ apt-get $APT_OPTIONS update | indent
 
 echo "Installing Timidity ${TIMIDITY_VERSION} and TimGM6mb SoundFont ${TIMGM_SOUNDFONT_VERSION}" | arrow
 
-apt-get $APT_OPTIONS -y -d --reinstall install libxt6 libsm6 libice6 timidity=$TIMIDITY_VERSION timgm6mb-soundfont=$TIMGM_SOUNDFONT_VERSION | indent
+apt-get $APT_OPTIONS -y -d install --reinstall libxt6 libsm6 libice6 timidity=$TIMIDITY_VERSION timgm6mb-soundfont=$TIMGM_SOUNDFONT_VERSION | indent
 
 mkdir -p $BUILD_DIR/.apt
 
