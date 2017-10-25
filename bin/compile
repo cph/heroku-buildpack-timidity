@@ -5,7 +5,7 @@ set -e
 BUILD_DIR=$1
 CACHE_DIR=$2
 SOURCE_LIST=`dirname $0`/../etc/sources.list
-TIMIDITY_VERSION=2.13.2-40.2
+TIMIDITY_VERSION=2.13.2-40.3
 TIMGM_SOUNDFONT_VERSION=1.3-2
 BIN_PATH=.apt/usr/bin
 LIB_PATH=.apt/usr/lib/x86_64-linux-gnu/
@@ -31,7 +31,7 @@ apt-get $APT_OPTIONS update | indent
 
 echo "Installing Timidity ${TIMIDITY_VERSION} and TimGM6mb SoundFont ${TIMGM_SOUNDFONT_VERSION}" | arrow
 
-apt-get $APT_OPTIONS -y -d install timidity=$TIMIDITY_VERSION timgm6mb-soundfont=$TIMGM_SOUNDFONT_VERSION | indent
+apt-get $APT_OPTIONS -y -d install libxt6 libsm6 libice6 timidity=$TIMIDITY_VERSION timgm6mb-soundfont=$TIMGM_SOUNDFONT_VERSION | indent
 
 mkdir -p $BUILD_DIR/.apt
 
