@@ -44,7 +44,7 @@ echo "Linking binaries" | arrow
 cd $BUILD_DIR/$BIN_PATH
 
 # manually link binary
-ln -s timidiy timidity-im6
+ln -s timidity timidity-im6
 
 # edit configs to enable fluid soundfont
 cd $BUILD_DIR/$ETC_PATH
