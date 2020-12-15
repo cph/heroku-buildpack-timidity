@@ -5,8 +5,8 @@ set -e
 BUILD_DIR=$1
 CACHE_DIR=$2
 SOURCE_LIST=`dirname $0`/../etc/sources.list
-TIMIDITY_VERSION=2.13.2-40.3
-TIMGM_SOUNDFONT_VERSION=1.3-2
+TIMIDITY_VERSION=2.14.0-8build1
+TIMGM_SOUNDFONT_VERSION=1.3-3
 BIN_PATH=.apt/usr/bin
 LIB_PATH=.apt/usr/lib/x86_64-linux-gnu/
 ETC_PATH=.apt/etc/timidity
@@ -31,7 +31,7 @@ apt-get $APT_OPTIONS update | indent
 
 echo "Installing Timidity ${TIMIDITY_VERSION} and TimGM6mb SoundFont ${TIMGM_SOUNDFONT_VERSION}" | arrow
 
-apt-get $APT_OPTIONS -y -d install --reinstall libxt6 libsm6 libice6 timidity=$TIMIDITY_VERSION timgm6mb-soundfont=$TIMGM_SOUNDFONT_VERSION | indent
+apt-get $APT_OPTIONS -y -d install --reinstall --no-install-recommends libxt6 libsm6 libice6 timidity=$TIMIDITY_VERSION timgm6mb-soundfont=$TIMGM_SOUNDFONT_VERSION | indent
 
 mkdir -p $BUILD_DIR/.apt
 
@@ -44,7 +44,7 @@ echo "Linking binaries" | arrow
 cd $BUILD_DIR/$BIN_PATH
 
 # manually link binary
-ln -s timidiy timidity-im6
+ln -s timidity timidity-im6
 
 # edit configs to enable fluid soundfont
 cd $BUILD_DIR/$ETC_PATH
@@ -55,7 +55,7 @@ sed -i '1i dir ~/.apt/usr/share/sounds/sf2' timgm6mb.cfg
 
 echo "Testing timidity installation" | arrow
 export LD_LIBRARY_PATH="$BUILD_DIR/$LIB_PATH:$LD_LIBRARY_PATH"
-$BUILD_DIR/$BIN_PATH/identify -list format | indent
+$BUILD_DIR/$BIN_PATH/timidity --version | indent
 
 echo "Building runtime environment" | arrow
 mkdir -p $BUILD_DIR/.profile.d
