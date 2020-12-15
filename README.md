@@ -1,6 +1,6 @@
 # Heroku Buildpack Timidity
 
-Use Timidity on `heroku-16` with a small (6MB) soundfont.
+Use Timidity on `heroku-20` with a small (6MB) soundfont.
 
 This repo draws heavily from [hyshka/heroku-buildpack-timidity-cedar-14](https://github.com/hyshka/heroku-buildpack-timidity-cedar-14)
 
