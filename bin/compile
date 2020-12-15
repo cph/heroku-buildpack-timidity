@@ -55,7 +55,7 @@ sed -i '1i dir ~/.apt/usr/share/sounds/sf2' timgm6mb.cfg
 
 echo "Testing timidity installation" | arrow
 export LD_LIBRARY_PATH="$BUILD_DIR/$LIB_PATH:$LD_LIBRARY_PATH"
-$BUILD_DIR/$BIN_PATH/identify -list format | indent
+$BUILD_DIR/$BIN_PATH/timidity --version | indent
 
 echo "Building runtime environment" | arrow
 mkdir -p $BUILD_DIR/.profile.d
